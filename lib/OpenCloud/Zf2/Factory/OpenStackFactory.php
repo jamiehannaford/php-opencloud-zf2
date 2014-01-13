@@ -2,6 +2,8 @@
 
 namespace OpenCloud\Zf2\Factory;
 
+use OpenCloud\Zf2\Exception\ProviderException;
+
 class OpenStackFactory extends AbstractProviderFactory
 {
     const CLIENT_CLASS = 'OpenCloud\OpenStack';
@@ -24,7 +26,7 @@ class OpenStackFactory extends AbstractProviderFactory
             ));
         }
 
-        if (!isset($this->config['tenantId']) || !isset($this->config['tenantName'])) {
+        if (!isset($this->config['tenantId']) && !isset($this->config['tenantName'])) {
             throw new ProviderException(sprintf(
                 'The %s config option is required to instantiate the %s service',
                 'tenantId/tenantName',
@@ -33,4 +35,4 @@ class OpenStackFactory extends AbstractProviderFactory
         }
     }
 
-} 
+}

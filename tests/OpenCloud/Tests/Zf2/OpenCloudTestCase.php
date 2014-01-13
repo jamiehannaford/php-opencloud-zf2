@@ -15,7 +15,35 @@ class OpenCloudTestCase extends \PHPUnit_Framework_TestCase
      */
     public function getServiceLocator()
     {
-        $config = OpenCloudModule::getModuleConfig();
-        return new ServiceManager(new Config($config['service_manager']));
+        $config  = OpenCloudModule::getModuleConfig();
+
+        $manager = new ServiceManager(new Config($config['service_manager']));
+        $manager->setAllowOverride(true);
+        $manager->setService('config', $this->getRackspaceConfig());
+
+        return $manager;
+    }
+
+    public function getOpenStackConfig()
+    {
+        return array(
+            'opencloud' => array(
+                'username' => 'foo',
+                'password' => 'bar',
+                'tenantId' => 'baz',
+                'auth_endpoint' => 'http://identity.foo.com/v2.0'
+            )
+        );
+    }
+
+    public function getRackspaceConfig()
+    {
+        return array(
+            'opencloud' => array(
+                'username' => 'foo',
+                'apiKey'   => 'bar',
+                'auth_endpoint' => 'rackspace-us'
+            )
+        );
     }
 }

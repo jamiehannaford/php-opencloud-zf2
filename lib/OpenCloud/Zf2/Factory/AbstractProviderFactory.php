@@ -25,4 +25,4 @@ abstract class AbstractProviderFactory implements ProviderFactoryInterface
     {
         return static::CLIENT_CLASS;
     }
-} 
+}

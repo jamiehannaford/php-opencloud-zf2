@@ -1,0 +1,15 @@
+<?php
+
+return array(
+
+    'opencloud' => array(
+        'username' => '',
+        'apiKey'   => '',
+
+        'password' => '',
+
+        'tenantName' => '',
+        'tenantId'   => ''
+    )
+
+);
