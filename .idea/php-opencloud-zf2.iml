@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/guzzle/common" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/guzzle/http" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/guzzle/parser" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/guzzle/stream" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/rackspace/php-opencloud" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/zendframework/zendframework" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="PHARS">
+        <CLASSES>
+          <root url="phar://$MODULE_DIR$/composer.phar" />
+        </CLASSES>
+        <SOURCES>
+          <root url="phar://$MODULE_DIR$/composer.phar" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="PHP">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/zendframework/zendframework" />
+          <root url="file://$MODULE_DIR$/vendor/guzzle/http" />
+          <root url="file://$MODULE_DIR$/vendor/guzzle/common" />
+          <root url="file://$MODULE_DIR$/vendor/guzzle/stream" />
+          <root url="file://$MODULE_DIR$/vendor/rackspace/php-opencloud" />
+          <root url="file://$MODULE_DIR$/vendor/composer" />
+          <root url="file://$MODULE_DIR$/vendor/guzzle/parser" />
+          <root url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/zendframework/zendframework" />
+          <root url="file://$MODULE_DIR$/vendor/guzzle/http" />
+          <root url="file://$MODULE_DIR$/vendor/guzzle/common" />
+          <root url="file://$MODULE_DIR$/vendor/guzzle/stream" />
+          <root url="file://$MODULE_DIR$/vendor/rackspace/php-opencloud" />
+          <root url="file://$MODULE_DIR$/vendor/composer" />
+          <root url="file://$MODULE_DIR$/vendor/guzzle/parser" />
+          <root url="file://$MODULE_DIR$/vendor/symfony/event-dispatcher" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>
+

@@ -1,0 +1,19 @@
+{
+    "name": "jamiehannaford/php-opencloud-zf2",
+    "description": "ZF2 module that allows easy interaction with Rackspace/OpenStack APIs",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Jamie Hannaford",
+            "email": "jamie.hannaford@rackspace.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"OpenCloud\\Zf2\\": "lib/OpenCloud/Zf2"},
+        "files": ["Module.php"]
+    },
+    "require": {
+        "zendframework/zendframework": "2.2.5",
+        "rackspace/php-opencloud": "v1.9.1"
+    }
+}
