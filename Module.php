@@ -2,6 +2,11 @@
 
 namespace OpenCloud;
 
+/**
+ * Module config class
+ *
+ * @package OpenCloud
+ */
 class Module
 {
     /**
@@ -22,6 +27,11 @@ class Module
         return include __DIR__ . '/config/module.config.php';
     }
 
+    /**
+     * Configures Zend's standard autoloader to find module namespaces
+     *
+     * @return array
+     */
     public function getAutoloaderConfig()
     {
         return array(

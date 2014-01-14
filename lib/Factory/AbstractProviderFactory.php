@@ -7,14 +7,24 @@ use OpenCloud\Rackspace;
 use OpenCloud\Zf2\Exception\ProviderException;
 use OpenCloud\Zf2\Enum\Endpoint;
 
+/**
+ * Abstract Provider Factory that provides base functionality for other concrete factories. The role of this class is
+ * to build concrete client objects which implement \Guzzle\Http\ClientInterface
+ *
+ * @package OpenCloud\Zf2\Factory
+ */
 abstract class AbstractProviderFactory implements ProviderFactoryInterface
 {
+    /** Default authentication endpoint */
     const DEFAULT_AUTH_ENDPOINT = Endpoint::US;
 
+    /** @var array Configuration values for the client, such as auth options */
     protected $config;
 
+    /** @var string FQCN of client */
     protected $clientClass;
 
+    /** @var array Required options for the client */
     protected $required = array();
 
     public static function newInstance()
@@ -42,10 +52,6 @@ abstract class AbstractProviderFactory implements ProviderFactoryInterface
         array_walk($this->required, array($this, 'validateOption'));
     }
 
-    /**
-     * @param $name
-     * @throws \OpenCloud\Zf2\Exception\ProviderException
-     */
     public function validateOption($name)
     {
         if (is_array($name) && count(array_diff($name, array_keys($this->config))) == count($name)) {
@@ -69,6 +75,11 @@ abstract class AbstractProviderFactory implements ProviderFactoryInterface
         return new $this->clientClass($authEndpoint, $this->config);
     }
 
+    /**
+     * Searchs the configuration values provided and attempts to build a suitable URL for authentication.
+     *
+     * @return \Guzzle\Http\Url
+     */
     private function extractAuthEndpoint()
     {
         $auth = empty($this->config['auth_endpoint']) ? self::DEFAULT_AUTH_ENDPOINT : $this->config['auth_endpoint'];
