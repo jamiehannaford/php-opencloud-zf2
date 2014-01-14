@@ -9,13 +9,13 @@ return array(
             'OpenCloud\OpenStack' => function ($serviceManager) {
                     $builder = $serviceManager->get('ProviderBuilder');
                     $builder->setProvider('OpenStack');
-                    $builder->setServiceLocator($serviceManager);
+                    $builder->setConfig($serviceManager->get('config'));
                     return $builder->build();
                 },
             'OpenCloud\Rackspace' => function ($serviceManager) {
                     $builder = $serviceManager->get('ProviderBuilder');
                     $builder->setProvider('Rackspace');
-                    $builder->setServiceLocator($serviceManager);
+                    $builder->setConfig($serviceManager->get('config'));
                     return $builder->build();
                 }
         ),

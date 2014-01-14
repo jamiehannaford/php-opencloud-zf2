@@ -10,26 +10,27 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 
 class ProviderBuilder
 {
+    const CONFIG_KEY = 'opencloud';
     const DEFAULT_AUTH_ENDPOINT = Endpoint::US;
 
     protected $provider;
-    protected $serviceLocator;
+    public $config;
 
     public function setProvider($provider)
     {
         $this->provider = $provider;
     }
 
-    public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
+    public function setConfig(array $config)
     {
-        $this->serviceLocator = $serviceLocator;
+        if (isset($config[self::CONFIG_KEY])) {
+            $config = $config[self::CONFIG_KEY];
+        }
+        $this->config = $config;
     }
 
     public function build()
     {
-        $config = $this->serviceLocator->get('config');
-        $config = $config['opencloud'];
-
         switch ($this->provider) {
             default:
             case Provider::RACKSPACE:
@@ -40,15 +41,15 @@ class ProviderBuilder
                 break;
         }
 
-        $factory = $this->buildFactory($class, $config);
+        $factory = $this->buildFactory($class);
 
         return $this->buildClient($factory);
     }
 
-    protected function buildFactory($factoryClass, array $config)
+    protected function buildFactory($factoryClass)
     {
         $factory = $factoryClass::newInstance();
-        $factory->setConfig($config);
+        $factory->setConfig($this->config);
         $factory->validateConfig();
 
         return $factory;
@@ -56,18 +57,12 @@ class ProviderBuilder
 
     protected function buildClient(ProviderFactoryInterface $factory)
     {
-        $class = $factory->getClientClass();
-
-        if (!class_exists($class)) {
-            throw new RuntimeException(sprintf(
-                '%s class does not exist. Please check you have installed the SDK correctly with Composer'
-            ));
-        }
-
         $config = $factory->getConfig();
 
         $authEndpoint = $this->extractAuthEndpoint($config);
         unset($config['auth_endpoint']);
+
+        $class = $factory->getClientClass();
 
         return new $class($authEndpoint, $config);
     }
