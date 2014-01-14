@@ -2,10 +2,15 @@
 
 namespace OpenCloud\Zf2\Factory;
 
+use Guzzle\Http\Url;
+use OpenCloud\Rackspace;
 use OpenCloud\Zf2\Exception\ProviderException;
+use OpenCloud\Zf2\Enum\Endpoint;
 
 abstract class AbstractProviderFactory implements ProviderFactoryInterface
 {
+    const DEFAULT_AUTH_ENDPOINT = Endpoint::US;
+
     protected $config;
 
     protected $clientClass;
@@ -53,5 +58,33 @@ abstract class AbstractProviderFactory implements ProviderFactoryInterface
         if (isset($error)) {
             throw new ProviderException($error);
         }
+    }
+
+    public function buildClient()
+    {
+        $authEndpoint = $this->extractAuthEndpoint();
+
+        unset($this->config['auth_endpoint']);
+
+        return new $this->clientClass($authEndpoint, $this->config);
+    }
+
+    private function extractAuthEndpoint()
+    {
+        $auth = empty($this->config['auth_endpoint']) ? self::DEFAULT_AUTH_ENDPOINT : $this->config['auth_endpoint'];
+
+        switch ($auth) {
+            case Endpoint::UK:
+                $endpoint = Rackspace::UK_IDENTITY_ENDPOINT;
+                break;
+            case Endpoint::US:
+                $endpoint = Rackspace::US_IDENTITY_ENDPOINT;
+                break;
+            default:
+                $endpoint = $auth;
+                break;
+        }
+
+        return Url::factory($endpoint);
     }
 }

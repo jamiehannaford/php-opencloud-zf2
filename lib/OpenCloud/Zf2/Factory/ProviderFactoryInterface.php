@@ -10,7 +10,11 @@ interface ProviderFactoryInterface
 
     public function getConfig();
 
+    public function getClientClass();
+
     public function validateConfig();
 
-    public function getClientClass();
+    public function validateOption($name);
+
+    public function buildClient();
 } 
