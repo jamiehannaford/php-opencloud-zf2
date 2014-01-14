@@ -9,11 +9,11 @@
         }
     ],
     "autoload": {
-        "psr-4": {"OpenCloud\\": "lib"},
+        "psr-4": {"OpenCloud\\Zf2\\": "lib/"},
         "files": ["Module.php"]
     },
     "require": {
         "zendframework/zendframework": "2.2.5",
-        "rackspace/php-opencloud": "~v1.9"
+        "rackspace/php-opencloud": "dev-master"
     }
 }
