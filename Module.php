@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenCloud\Zf2;
+namespace OpenCloud;
 
 class Module
 {
@@ -20,5 +20,16 @@ class Module
     public static function getModuleConfig()
     {
         return include __DIR__ . '/config/module.config.php';
+    }
+
+    public function getAutoloaderConfig()
+    {
+        return array(
+            'Zend\Loader\StandardAutoloader' => array(
+                'namespaces' => array(
+                    __NAMESPACE__ . '\\Zf2' => __DIR__ . '/lib/',
+                ),
+            ),
+        );
     }
 }
