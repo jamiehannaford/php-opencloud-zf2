@@ -2,7 +2,7 @@
 
 namespace OpenCloud\Tests\Zf2;
 
-use OpenCloud\Zf2\Module as OpenCloudModule;
+use OpenCloud\Module as OpenCloudModule;
 use Zend\ServiceManager\Config;
 use Zend\ServiceManager\ServiceManager;
 

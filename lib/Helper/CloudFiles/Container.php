@@ -19,6 +19,13 @@ class Container
         $this->container = $this->service->getContainer($name);
     }
 
+    public function __call($name, $args)
+    {
+        if (method_exists($this->container, $name)) {
+            return call_user_func_array(array($this->container, $name), $args);
+        }
+    }
+
     public function breakCache()
     {
         $this->files = array();

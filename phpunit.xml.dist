@@ -3,16 +3,16 @@
 
     <testsuites>
         <testsuite name="OpenCloud">
-            <directory>./tests/OpenCloud/Tests/Zf2</directory>
+            <directory>./tests/OpenCloud</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./lib/OpenCloud/Zf2</directory>
+            <directory suffix=".php">./lib</directory>
             <exclude>
-                <directory>./lib/OpenCloud/**/Enum</directory>
-                <directory suffix="Exception.php">./lib/OpenCloud/**/Exception</directory>
+                <directory>./lib/**/Enum</directory>
+                <directory suffix="Exception.php">./lib/**/Exception</directory>
             </exclude>
         </whitelist>
     </filter>

@@ -35,17 +35,16 @@ class CloudFilesHelper extends AbstractHelper
             throw new InvalidArgumentException('A container name must be a valid string or int');
         }
 
-        if (isset($this->containers[$name])) {
-            return $this->containers[$name];
+        if (!isset($this->containers[$name])) {
+            $this->createContainer($name);
         }
 
-        return $this->createContainer($name);
+        return $this->containers[$name];
     }
 
     protected function createContainer($name)
     {
         $this->containers[$name] = new Container($this->service, $name);
-        return $this->containers[$name];
     }
 
 }

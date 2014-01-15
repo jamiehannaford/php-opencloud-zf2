@@ -2,7 +2,7 @@
 
 namespace OpenCloud\Zf2\Helper\CloudFiles;
 
-use OpenCloud\ObjectStore\Resource\DataObject;
+use OpenCloud\ObjectStore\Resource\DataObject as BaseDataObject;
 
 class HtmlRenderer
 {
@@ -18,7 +18,7 @@ class HtmlRenderer
         'audio/*' => 'AudioElement'
     );
 
-    public static function factory(DataObject $object, $urlType)
+    public static function factory(BaseDataObject $object, $urlType)
     {
         $renderer = new self();
         $renderer->setObject($object);
@@ -27,7 +27,7 @@ class HtmlRenderer
         return $renderer->build();
     }
 
-    public function setObject(DataObject $object)
+    public function setObject(BaseDataObject $object)
     {
         $this->object = $object;
     }

@@ -1,10 +1,11 @@
 <?php
 
-namespace OpenCloud\Zf2\Factory;
+namespace OpenCloud\Tests\Zf2\Factory;
 
 use OpenCloud\Tests\Zf2\OpenCloudTestCase;
 use OpenCloud\Zf2\Enum\Provider;
 use OpenCloud\Rackspace;
+use OpenCloud\Zf2\Factory\ProviderBuilder;
 
 class ProviderBuilderTest extends OpenCloudTestCase
 {

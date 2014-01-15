@@ -21,6 +21,13 @@ class DataObject
         }
     }
 
+    public function __call($name, $args)
+    {
+        if (method_exists($this->dataObject, $name)) {
+            return call_user_func_array(array($this->dataObject, $name), $args);
+        }
+    }
+
     public function render($urlType)
     {
         return HtmlRenderer::factory($this->dataObject, $urlType);
