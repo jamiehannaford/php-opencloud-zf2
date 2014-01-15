@@ -20,7 +20,8 @@ class VideoElement extends AbstractElement
         $url = $this->object->getPublicUrl($this->urlType);
         $mime = $this->object->getContentType();
 
-        return '<video ' . $this->htmlAttribs($this->attributes) . '>' . PHP_EOL
+        return '<video ' . $this->htmlAttribs($this->attributes) 
+        	. (!isset($this->attributes['controls']) ? ' controls ' : '') . '>' . PHP_EOL
             . '<source src="' . $url . '" type="' . $mime . '">' . PHP_EOL
             . '</video>';
     }

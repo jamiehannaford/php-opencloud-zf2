@@ -22,5 +22,21 @@ return array(
         'aliases' => array(
             'OpenCloud' => 'OpenCloud\Rackspace'
         )
+    ),
+    'view_helpers' => array(
+    	'factories' => array(
+    		'CloudFiles' => function ($serviceManager) {
+				$sl = $serviceManager->getServiceLocator();
+	    		$client = $sl->get('OpenCloud');
+	    		$config = $sl->get('config');
+	    		
+	    		$region = $config['opencloud']['region'];
+	    		$urlType = $config['opencloud']['url_type'];
+	    		
+	    		$service = $client->objectStoreService('cloudFiles', $region, $urlType);
+	    		
+	    		return new \OpenCloud\Zf2\Helper\CloudFilesHelper($service);
+    		}
+    	)
     )
 );

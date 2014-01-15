@@ -5,6 +5,7 @@ namespace OpenCloud\Zf2\Helper\CloudFiles;
 use OpenCloud\Common\Collection\PaginatedIterator;
 use OpenCloud\Common\Service\ServiceInterface;
 use OpenCloud\ObjectStore\Constants\UrlType;
+use OpenCloud\Rackspace;
 
 class Container 
 {
@@ -16,14 +17,8 @@ class Container
     public function __construct(ServiceInterface $service, $name)
     {
         $this->service = $service;
+        
         $this->container = $this->service->getContainer($name);
-    }
-
-    public function __call($name, $args)
-    {
-        if (method_exists($this->container, $name)) {
-            return call_user_func_array(array($this->container, $name), $args);
-        }
     }
 
     public function breakCache()
@@ -34,7 +29,7 @@ class Container
     protected function checkCache($name)
     {
         if (!isset($this->files[$name])) {
-            $this->files[$name] = $this->container->getObject($name);
+            $this->files[$name] = $this->getObject($name);
         }
     }
 
@@ -52,9 +47,9 @@ class Container
         return $this->files[$name]->renderUrl($urlType);
     }
 
-    public function getObject($data)
+    public function getObject($name)
     {
-        return new DataObject($this, $data);
+        return new DataObject($this->container, $name);
     }
 
     public function renderAllFiles($limit = 100, $urlType = UrlType::CDN, $htmlPrefix = false, $htmlSuffix = false)
@@ -66,7 +61,7 @@ class Container
 
         foreach ($files as $file) {
 
-            $url = $this->getObject($file)->renderUrl($urlType);
+            $url = $this->getObject($file->getName())->renderUrl($urlType);
 
             if ($htmlPrefix && $htmlSuffix) {
                 $outputString .= $htmlPrefix . $url . $htmlSuffix;

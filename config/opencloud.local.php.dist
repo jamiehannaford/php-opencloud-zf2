@@ -9,7 +9,10 @@ return array(
         'password' => '',
 
         'tenantName' => '',
-        'tenantId'   => ''
+        'tenantId'   => '',
+        
+        'region' => '',
+        'url_type' => ''
     )
 
 );

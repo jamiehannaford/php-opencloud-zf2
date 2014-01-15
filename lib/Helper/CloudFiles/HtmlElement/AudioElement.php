@@ -9,7 +9,8 @@ class AudioElement extends AbstractElement
         $url = $this->object->getPublicUrl($this->urlType);
         $mime = $this->object->getContentType();
 
-        return '<audio ' . $this->htmlAttribs($this->attributes) . '>' . PHP_EOL
+        return '<audio ' . $this->htmlAttribs($this->attributes) 
+        	. (!isset($this->attributes['controls']) ? ' controls ' : '') . '>' . PHP_EOL
             . '<source src="' . $url . '" type="' . $mime . '">' . PHP_EOL
             . '</audio>';
     }

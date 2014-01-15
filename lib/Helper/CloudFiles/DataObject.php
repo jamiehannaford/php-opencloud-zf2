@@ -2,30 +2,16 @@
 
 namespace OpenCloud\Zf2\Helper\CloudFiles;
 
-use OpenCloud\ObjectStore\Resource\DataObject as BaseDataObject;
+use OpenCloud\ObjectStore\Resource\Container as BaseContainer;
+
 
 class DataObject
 {
-    protected $container;
-
     protected $dataObject;
 
-    public function __construct(Container $container, $data)
+    public function __construct(BaseContainer $container, $name)
     {
-        $this->container = $container;
-
-        if ($data instanceof BaseDataObject) {
-            $this->dataObject = $data;
-        } else {
-            $this->dataObject = $this->container->getObject($data);
-        }
-    }
-
-    public function __call($name, $args)
-    {
-        if (method_exists($this->dataObject, $name)) {
-            return call_user_func_array(array($this->dataObject, $name), $args);
-        }
+        $this->dataObject = $container->getPartialObject($name);
     }
 
     public function render($urlType)

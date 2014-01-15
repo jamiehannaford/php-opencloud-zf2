@@ -3,10 +3,18 @@
 namespace OpenCloud\Zf2\Helper\CloudFiles;
 
 use OpenCloud\ObjectStore\Resource\DataObject as BaseDataObject;
+use OpenCloud\Zf2\Exception\RenderException;
+use OpenCloud\Zf2\Helper\CloudFiles\HtmlElement\ElementInterface;
 
 class HtmlRenderer
 {
     const DEFAULT_ELEMENT_CLASS = 'LinkElement';
+
+	protected $object;
+	
+	protected $urlType;
+	
+	protected $attributes;
 
     protected $elementMap = array(
         // custom mime types...
@@ -18,11 +26,12 @@ class HtmlRenderer
         'audio/*' => 'AudioElement'
     );
 
-    public static function factory(BaseDataObject $object, $urlType)
+    public static function factory(BaseDataObject $object, $urlType, array $attributes = array())
     {
         $renderer = new self();
         $renderer->setObject($object);
         $renderer->setUrlType($urlType);
+        $renderer->setAttributes($attributes);
 
         return $renderer->build();
     }
@@ -35,6 +44,11 @@ class HtmlRenderer
     public function setUrlType($urlType)
     {
         $this->urlType = $urlType;
+    }
+    
+    public function setAttributes(array $attributes)
+    {
+        $this->attributes = $attributes;
     }
 
     public function build()
@@ -49,13 +63,9 @@ class HtmlRenderer
             $elementClass = self::DEFAULT_ELEMENT_CLASS;
         }
 
-        if (!$elementClass instanceof ElementInterface) {
-            throw new RenderException(sprintf(
-                '%s is not an instance of %s', $elementClass, __NAMESPACE__ . '\\ElementInterface'
-            ));
-        }
+		$elementClass = __NAMESPACE__ . '\\HtmlElement\\' . $elementClass;
 
-        return $elementClass::factory($this->object);
+        return $elementClass::factory($this->object, $this->urlType, $this->attributes);
     }
 
     private function searchWildcards($mime)
