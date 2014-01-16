@@ -11,9 +11,9 @@ class ImageElement extends AbstractElement
 {
     public function render()
     {
-        return '<img ' . $this->htmlAttribs($this->attributes) 
-        	. ' src="' . $this->object->getPublicUrl($this->urlType) . '"'
-            . ((empty($this->attributes['alt'])) ? ' alt="'. $this->object->getName() . '"' : '')
-            . '/>';
+        return '<img ' . $this->htmlAttribs($this->attributes)
+        . ' src="' . $this->object->getPublicUrl($this->urlType) . '"'
+        . ((empty($this->attributes['alt'])) ? ' alt="' . $this->object->getName() . '"' : '')
+        . '/>';
     }
 } 

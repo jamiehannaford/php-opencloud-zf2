@@ -14,6 +14,6 @@ class LinkElement extends AbstractElement
         $url = $this->object->getPublicUrl($this->urlType);
         $name = $this->object->getName();
 
-        return '<a ' . $this->htmlAttribs($this->attributes) . ' href="' . $url . '">' . $name . '</a>';
+        //return '<a ' . $this->htmlAttribs($this->attributes) . ' href="' . $url . '">' . $name . '</a>';
     }
 }

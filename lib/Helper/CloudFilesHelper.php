@@ -4,9 +4,8 @@ namespace OpenCloud\Zf2\Helper;
 
 use OpenCloud\Common\Service\ServiceInterface;
 use OpenCloud\Zf2\Helper\CloudFiles\Container;
-use Zend\View\Helper\AbstractHelper;
 use Zend\View\Exception\InvalidArgumentException;
-use Zend\View\Renderer\RendererInterface as Renderer;
+use Zend\View\Helper\AbstractHelper;
 
 /**
  * Helper class for playing with Cloud Files in the views. Allows rendering of remote CDN objects, among other things.

@@ -4,8 +4,8 @@ namespace OpenCloud\Zf2\Factory;
 
 use Guzzle\Http\Url;
 use OpenCloud\Rackspace;
-use OpenCloud\Zf2\Exception\ProviderException;
 use OpenCloud\Zf2\Enum\Endpoint;
+use OpenCloud\Zf2\Exception\ProviderException;
 
 /**
  * Abstract Provider Factory that provides base functionality for other concrete factories. The role of this class is
@@ -32,14 +32,14 @@ abstract class AbstractProviderFactory implements ProviderFactoryInterface
         return new static();
     }
 
-    public function setConfig(array $config)
-    {
-        $this->config = $config;
-    }
-
     public function getConfig()
     {
         return $this->config;
+    }
+
+    public function setConfig(array $config)
+    {
+        $this->config = $config;
     }
 
     public function getClientClass()

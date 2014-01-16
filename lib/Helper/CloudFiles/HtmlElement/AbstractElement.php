@@ -14,13 +14,13 @@ use Zend\View\Renderer\RendererInterface;
 abstract class AbstractElement extends AbstractHtmlElement implements ElementInterface
 {
     /** @var \OpenCloud\ObjectStore\Resource\DataObject */
-	protected $object;
+    protected $object;
 
     /** @var string */
-	protected $urlType;
+    protected $urlType;
 
     /** @var array */
-	protected $attributes;
+    protected $attributes;
 
     public function setObject(DataObject $object)
     {

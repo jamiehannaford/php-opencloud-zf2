@@ -16,17 +16,17 @@ class HtmlRenderer
 {
     const DEFAULT_ELEMENT_CLASS = 'LinkElement';
 
-	/** @var Zend\View\Renderer\RendererInterface */
-	protected $renderer;
+    /** @var Zend\View\Renderer\RendererInterface */
+    protected $renderer;
 
     /** @var \OpenCloud\ObjectStore\Resource\DataObject */
-	protected $object;
+    protected $object;
 
     /** @var string The type of URL used to access the resource */
-	protected $urlType;
+    protected $urlType;
 
     /** @var array HTML tag attributes */
-	protected $attributes;
+    protected $attributes;
 
     /** @var array Used to map custom MIME types (key) to its rendering class (value) */
     protected $elementMap = array();
@@ -57,7 +57,7 @@ class HtmlRenderer
         return $htmlRenderer->build();
     }
 
-	/**
+    /**
      * @param RendererInterface $renderer
      */
     public function setRenderer(RendererInterface $renderer)
@@ -104,7 +104,7 @@ class HtmlRenderer
             $elementClass = self::DEFAULT_ELEMENT_CLASS;
         }
 
-		$elementClass = __NAMESPACE__ . '\\HtmlElement\\' . $elementClass;
+        $elementClass = __NAMESPACE__ . '\\HtmlElement\\' . $elementClass;
 
         return $elementClass::factory($this->renderer, $this->object, $this->urlType, $this->attributes);
     }

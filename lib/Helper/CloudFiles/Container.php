@@ -13,11 +13,11 @@ use Zend\View\Renderer\RendererInterface;
  *
  * @package OpenCloud\Zf2\Helper\CloudFiles
  */
-class Container 
+class Container
 {
-	/** @var Zend\View\Renderer\RendererInterface */
-	protected $renderer;
-	
+    /** @var Zend\View\Renderer\RendererInterface */
+    protected $renderer;
+
     /** @var OpenCloud\ObjectStore\Resource\Container Wrapped object */
     protected $container;
 
@@ -30,7 +30,7 @@ class Container
      */
     public function __construct(RendererInterface $renderer, ServiceInterface $service, $name)
     {
-    	$this->renderer = $renderer;
+        $this->renderer = $renderer;
         $this->container = $service->getContainer($name);
     }
 
@@ -116,7 +116,7 @@ class Container
         $files = $this->container->objectList(array(PaginatedIterator::LIMIT => $limit));
 
         $outputString = '';
-        $outputArray  = array();
+        $outputArray = array();
 
         foreach ($files as $file) {
 

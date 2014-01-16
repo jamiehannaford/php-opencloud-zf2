@@ -13,10 +13,10 @@ use Zend\View\Renderer\RendererInterface;
  */
 class DataObject
 {
-	/** @var Zend\View\Renderer\RendererInterface */
-	protected $renderer;
-	
-    /** @var OpenCloud\ObjectStore\Resource\DataObject The object being wrapped  */
+    /** @var Zend\View\Renderer\RendererInterface */
+    protected $renderer;
+
+    /** @var OpenCloud\ObjectStore\Resource\DataObject The object being wrapped */
     protected $dataObject;
 
     /**
@@ -25,7 +25,7 @@ class DataObject
      */
     public function __construct(RendererInterface $renderer, BaseContainer $container, $name)
     {
-    	$this->renderer = $renderer;
+        $this->renderer = $renderer;
         $this->dataObject = $container->getPartialObject($name);
     }
 
