@@ -3,7 +3,7 @@ php-opencloud-zf2
 
 A simple but powerful ZF2 module that allows your web app to communicate easily with Rackspace/OpenStack APIs. You can
 manage your cloud account configurations, use Swift helper functions in your view files, monitor your cloud servers, sync
-directories with a CDN, update DNS records... In short, you get the full benefit of an SDK without all the hassle.
+directories with a CDN, update DNS records... In short, you get the full benefit of an SDK without all the overhead.
 
 ## Installation
 
@@ -36,7 +36,7 @@ And then run:
 php composer.phar install
 ```
 
-## Step 3: ZF2 Configuration
+### Step 3: ZF2 Configuration
 
 You need to update your `application.config.php` file, and add in the module:
 
@@ -50,13 +50,13 @@ return array(
 ```
 
 You then need to make sure you have an `opencloud.local.php` configuration file in your `config/autoload`
-directory - since this is what holds all your API configuration values.
-
-To make life easier, you can copy the dist verion shipped with this project:
+directory - since this is what holds all your API configuration values. To make life easier, you can copy the dist
+version shipped with this project:
 
 ```bash
-cp vendor/jamiehannaford/php-opencloud-zf2/config/opencloud.local.php.dist config/autoload/opencloud.local.php
+cp ./vendor/jamiehannaford/php-opencloud-zf2/config/opencloud.local.php.dist ./config/autoload/opencloud.local.php
 ```
 
-If using Rackspace, you must fill in the `username` and `apiKey` config options; if using OpenStack, you must fill in
-the `username`, `password` config options, along with *either* `tenantId` or `tenantName`.
+If using Rackspace, you must fill in the `username` and `apiKey` config options.
+
+If using OpenStack, you must fill in the `username`, `password` config options, along with *either* `tenantId` or `tenantName`.
