@@ -26,7 +26,15 @@ class Container
      */
     public function __construct(ServiceInterface $service, $name)
     {
-        $this->container = $this->service->getContainer($name);
+        $this->container = $service->getContainer($name);
+    }
+
+    /**
+     * @return array
+     */
+    public function getCache()
+    {
+        return $this->files;
     }
 
     /**

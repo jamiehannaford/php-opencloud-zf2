@@ -18,5 +18,11 @@
     "require": {
         "zendframework/zendframework": "2.2.5",
         "rackspace/php-opencloud": "dev-master"
+    },
+    "require-dev" : {
+        "guzzle/plugin-mock": "3.8.*@dev",
+        "guzzle/plugin-log": "3.8.*@dev",
+        "psr/log": "1.0.*",
+        "satooshi/php-coveralls": "0.6.*@dev"
     }
 }

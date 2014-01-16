@@ -25,18 +25,21 @@ return array(
     ),
     'view_helpers' => array(
     	'factories' => array(
-    		'CloudFiles' => function ($serviceManager) {
-				$sl = $serviceManager->getServiceLocator();
-	    		$client = $sl->get('OpenCloud');
-	    		$config = $sl->get('config');
+    		'CloudFiles' => function ($pluginManager) {
+				$serviceManager = $pluginManager->getServiceLocator();
+	    		$client = $serviceManager->get('OpenCloud');
+	    		$config = $serviceManager->get('config');
 	    		
 	    		$region = $config['opencloud']['region'];
 	    		$urlType = $config['opencloud']['url_type'];
 	    		
 	    		$service = $client->objectStoreService('cloudFiles', $region, $urlType);
 	    		
-	    		return new \OpenCloud\Zf2\Helper\CloudFilesHelper($service);
-    		}
+	    		$helper = new \OpenCloud\Zf2\Helper\CloudFilesHelper($service);
+                $pluginManager->injectRenderer($helper);
+
+                return $helper;
+            }
     	)
     )
 );

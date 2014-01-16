@@ -2,12 +2,12 @@
 
 namespace OpenCloud\Tests\Zf2\Factory;
 
-use OpenCloud\Tests\Zf2\OpenCloudTestCase;
+use OpenCloud\Tests\Zf2\Zf2TestCase;
 use OpenCloud\Zf2\Enum\Provider;
 use OpenCloud\Rackspace;
 use OpenCloud\Zf2\Factory\ProviderBuilder;
 
-class ProviderBuilderTest extends OpenCloudTestCase
+class ProviderBuilderTest extends Zf2TestCase
 {
 
     public function test_Rackspace_Client()

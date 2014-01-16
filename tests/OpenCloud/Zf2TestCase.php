@@ -3,10 +3,11 @@
 namespace OpenCloud\Tests\Zf2;
 
 use OpenCloud\Module as OpenCloudModule;
+use OpenCloud\Tests\OpenCloudTestCase;
 use Zend\ServiceManager\Config;
 use Zend\ServiceManager\ServiceManager;
 
-class OpenCloudTestCase extends \PHPUnit_Framework_TestCase
+class Zf2TestCase extends OpenCloudTestCase
 {
     /**
      * Create a service manager/locator object for tests that need access to service registry
