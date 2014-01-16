@@ -2,9 +2,13 @@
 
 namespace OpenCloud\Zf2\Helper\CloudFiles\HtmlElement;
 
+/**
+ * Class for rendering <img> tags
+ *
+ * @package OpenCloud\Zf2\Helper\CloudFiles\HtmlElement
+ */
 class ImageElement extends AbstractElement
 {
-
     public function render()
     {
         return '<img ' . $this->htmlAttribs($this->attributes) 
@@ -12,5 +16,4 @@ class ImageElement extends AbstractElement
             . ((empty($this->attributes['alt'])) ? ' alt="'. $this->object->getName() . '"' : '')
             . '/>';
     }
-
 } 

@@ -2,6 +2,11 @@
 
 namespace OpenCloud\Zf2\Helper\CloudFiles\HtmlElement;
 
+/**
+ * Class for rendering <video> tags.
+ *
+ * @package OpenCloud\Zf2\Helper\CloudFiles\HtmlElement
+ */
 class VideoElement extends AbstractElement
 {
     const DEFAULT_W = 320;
@@ -25,5 +30,4 @@ class VideoElement extends AbstractElement
             . '<source src="' . $url . '" type="' . $mime . '">' . PHP_EOL
             . '</video>';
     }
-
 }

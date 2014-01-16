@@ -5,12 +5,20 @@ namespace OpenCloud\Zf2\Helper\CloudFiles\HtmlElement;
 use OpenCloud\ObjectStore\Resource\DataObject;
 use Zend\View\Helper\AbstractHtmlElement;
 
+/**
+ * Abstract class that provides base functionality for element objects
+ *
+ * @package OpenCloud\Zf2\Helper\CloudFiles\HtmlElement
+ */
 abstract class AbstractElement extends AbstractHtmlElement implements ElementInterface
 {
+    /** @var \OpenCloud\ObjectStore\Resource\DataObject */
 	protected $object;
-	
+
+    /** @var string */
 	protected $urlType;
-	
+
+    /** @var array */
 	protected $attributes;
 
     public function setObject(DataObject $object)
@@ -22,13 +30,11 @@ abstract class AbstractElement extends AbstractHtmlElement implements ElementInt
     {
         $this->urlType = $urlType;
     }
-    
+
     public function setAttributes(array $attributes)
     {
         $this->attributes = $attributes;
     }
-
-	public function htmlAttribs() {}
 
     public static function factory(DataObject $object, $urlType, array $attributes = array())
     {

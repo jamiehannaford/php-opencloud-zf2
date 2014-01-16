@@ -2,6 +2,11 @@
 
 namespace OpenCloud\Zf2\Helper\CloudFiles\HtmlElement;
 
+/**
+ * Class for rendering <audio> tags
+ *
+ * @package OpenCloud\Zf2\Helper\CloudFiles\HtmlElement
+ */
 class AudioElement extends AbstractElement
 {
     public function render()
