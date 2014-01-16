@@ -4,6 +4,7 @@
 namespace OpenCloud\Zf2\Helper\CloudFiles\HtmlElement;
 
 use OpenCloud\ObjectStore\Resource\DataObject;
+use Zend\View\Renderer\RendererInterface;
 
 /**
  * Standard interface for all HTML element objects.
@@ -20,7 +21,7 @@ interface ElementInterface
      * @param array      $attributes HTML tag attributes
      * @return mixed
      */
-    public static function factory(DataObject $object, $urlType, array $attributes = array());
+    public static function factory(RendererInterface $renderer, DataObject $object, $urlType, array $attributes = array());
 
     /**
      * Set data object

@@ -4,6 +4,7 @@ namespace OpenCloud\Zf2\Helper\CloudFiles\HtmlElement;
 
 use OpenCloud\ObjectStore\Resource\DataObject;
 use Zend\View\Helper\AbstractHtmlElement;
+use Zend\View\Renderer\RendererInterface;
 
 /**
  * Abstract class that provides base functionality for element objects
@@ -36,9 +37,10 @@ abstract class AbstractElement extends AbstractHtmlElement implements ElementInt
         $this->attributes = $attributes;
     }
 
-    public static function factory(DataObject $object, $urlType, array $attributes = array())
+    public static function factory(RendererInterface $renderer, DataObject $object, $urlType, array $attributes = array())
     {
         $element = new static();
+        $element->setView($renderer);
         $element->setObject($object);
         $element->setAttributes($attributes);
         $element->setUrlType($urlType);

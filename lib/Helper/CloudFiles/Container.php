@@ -5,6 +5,7 @@ namespace OpenCloud\Zf2\Helper\CloudFiles;
 use OpenCloud\Common\Collection\PaginatedIterator;
 use OpenCloud\Common\Service\ServiceInterface;
 use OpenCloud\ObjectStore\Constants\UrlType;
+use Zend\View\Renderer\RendererInterface;
 
 /**
  * Facade object which provides a simple interface to the underlying Container model. It offers functionality one
@@ -14,6 +15,9 @@ use OpenCloud\ObjectStore\Constants\UrlType;
  */
 class Container 
 {
+	/** @var Zend\View\Renderer\RendererInterface */
+	protected $renderer;
+	
     /** @var OpenCloud\ObjectStore\Resource\Container Wrapped object */
     protected $container;
 
@@ -24,8 +28,9 @@ class Container
      * @param ServiceInterface $service Parent service
      * @param                  $name    Name of container
      */
-    public function __construct(ServiceInterface $service, $name)
+    public function __construct(RendererInterface $renderer, ServiceInterface $service, $name)
     {
+    	$this->renderer = $renderer;
         $this->container = $service->getContainer($name);
     }
 
@@ -64,11 +69,11 @@ class Container
      * @param string $urlType Connection type
      * @return mixed
      */
-    public function renderFile($name, $urlType = UrlType::CDN)
+    public function renderFile($name, array $attrs = array(), $urlType = UrlType::CDN)
     {
         $this->checkCache($name);
 
-        return $this->files[$name]->render($urlType);
+        return $this->files[$name]->render($attrs, $urlType);
     }
 
     /**
@@ -93,7 +98,7 @@ class Container
      */
     public function getObject($name)
     {
-        return new DataObject($this->container, $name);
+        return new DataObject($this->renderer, $this->container, $name);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace OpenCloud\Zf2\Helper\CloudFiles;
 
 use OpenCloud\ObjectStore\Resource\DataObject as BaseDataObject;
+use Zend\View\Renderer\RendererInterface;
 
 /**
  * Class which renders a remote URI into valid HTML markup, where necessary. For example, resources with an `image/*`
@@ -14,6 +15,9 @@ use OpenCloud\ObjectStore\Resource\DataObject as BaseDataObject;
 class HtmlRenderer
 {
     const DEFAULT_ELEMENT_CLASS = 'LinkElement';
+
+	/** @var Zend\View\Renderer\RendererInterface */
+	protected $renderer;
 
     /** @var \OpenCloud\ObjectStore\Resource\DataObject */
 	protected $object;
@@ -42,14 +46,23 @@ class HtmlRenderer
      * @param array          $attributes HTML tag attributes
      * @return mixed
      */
-    public static function factory(BaseDataObject $object, $urlType, array $attributes = array())
+    public static function factory(RendererInterface $renderer, BaseDataObject $object, $urlType, array $attributes = array())
     {
-        $renderer = new self();
-        $renderer->setObject($object);
-        $renderer->setUrlType($urlType);
-        $renderer->setAttributes($attributes);
+        $htmlRenderer = new self();
+        $htmlRenderer->setRenderer($renderer);
+        $htmlRenderer->setObject($object);
+        $htmlRenderer->setUrlType($urlType);
+        $htmlRenderer->setAttributes($attributes);
 
-        return $renderer->build();
+        return $htmlRenderer->build();
+    }
+
+	/**
+     * @param RendererInterface $renderer
+     */
+    public function setRenderer(RendererInterface $renderer)
+    {
+        $this->renderer = $renderer;
     }
 
     /**
@@ -93,7 +106,7 @@ class HtmlRenderer
 
 		$elementClass = __NAMESPACE__ . '\\HtmlElement\\' . $elementClass;
 
-        return $elementClass::factory($this->object, $this->urlType, $this->attributes);
+        return $elementClass::factory($this->renderer, $this->object, $this->urlType, $this->attributes);
     }
 
     /**
