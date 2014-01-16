@@ -52,15 +52,4 @@ return array(
 ```
 
 You then need to make sure you have an `opencloud.{local|global}.php` configuration file in your `config/autoload`
-directory - since this is what holds all your API configuration values. The `local.php` file should contain sensitive
-data (username, API key, password) and will not be added to your VCS; the `global.php` file will house more general information.
-
-To make life easier, you can copy the dist verions shipped with this project:
-
-```bash
-cp vendor/jamiehannaford/php-opencloud-zf2/config/opencloud.local.php.dist config/autoload/opencloud.local.php
-cp vendor/jamiehannaford/php-opencloud-zf2/config/opencloud.global.php.dist config/autoload/opencloud.global.php
-```
-
-If using Rackspace, you must fill in the `username` and `apiKey` config options; if using OpenStack, you must fill in
-the `username`, `password` config options, along with *either* `tenantId` or `tenantName`.
+directory - since this is what holds all your API configuration values:

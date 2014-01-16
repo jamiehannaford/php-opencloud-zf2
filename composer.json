@@ -10,8 +10,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "OpenCloud\\Zf2\\": "lib/",
-            "OpenCloud\\Tests\\Zf2\\" : "tests/OpenCloud/"
+            "OpenCloud\\Zf2\\": "src/",
+            "OpenCloud\\Tests\\Zf2\\": "tests/OpenCloud/"
         },
         "files": ["Module.php"]
     },

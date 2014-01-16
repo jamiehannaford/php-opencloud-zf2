@@ -9,10 +9,10 @@
 
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./lib</directory>
+            <directory suffix=".php">./src</directory>
             <exclude>
-                <directory>./lib/**/Enum</directory>
-                <directory suffix="Exception.php">./lib/**/Exception</directory>
+                <directory>./src/**/Enum</directory>
+                <directory suffix="Exception.php">./src/**/Exception</directory>
             </exclude>
         </whitelist>
     </filter>

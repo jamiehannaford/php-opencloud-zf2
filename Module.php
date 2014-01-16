@@ -37,7 +37,7 @@ class Module
         return array(
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
-                    __NAMESPACE__ . '\\Zf2' => __DIR__ . '/lib/',
+                    __NAMESPACE__ . '\\Zf2' => __DIR__ . '/src/',
                 ),
             ),
         );
