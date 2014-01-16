@@ -4,13 +4,16 @@ namespace OpenCloud\Tests\Zf2\Helper;
 
 use OpenCloud\Tests\Zf2\Zf2TestCase;
 use OpenCloud\Zf2\Helper\CloudFilesHelper;
+use Zend\View\Renderer\PhpRenderer;
 
 class CloudFilesHelperTest extends Zf2TestCase
 {
     private function getHelper()
     {
         $service = $this->getClient()->objectStoreService('cloudFiles', 'ORD');
-        return new CloudFilesHelper($service);
+        $helper = new CloudFilesHelper($service);
+        $helper->setView(new PhpRenderer());
+        return $helper;
     }
 
     public function test_Invoke()

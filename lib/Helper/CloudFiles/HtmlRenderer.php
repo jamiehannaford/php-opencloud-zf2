@@ -29,7 +29,9 @@ class HtmlRenderer
     protected $attributes;
 
     /** @var array Used to map custom MIME types (key) to its rendering class (value) */
-    protected $elementMap = array();
+    protected $elementMap = array(
+        'application/x-shockwave-flash' => 'ObjectElement'
+    );
 
     /** @var array Allows MIME types to be mapped to rendering classes using wildcards */
     protected $elementWildcards = array(
