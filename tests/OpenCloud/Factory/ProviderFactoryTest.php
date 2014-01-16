@@ -7,7 +7,6 @@ use OpenCloud\Zf2\Factory\RackspaceFactory;
 
 class ProviderFactoryTest extends Zf2TestCase
 {
-
     public function test_Factory()
     {
         $providerFactory = new RackspaceFactory();
@@ -20,5 +19,4 @@ class ProviderFactoryTest extends Zf2TestCase
 
         $this->assertInstanceOf('OpenCloud\Rackspace', $providerFactory->buildClient());
     }
-
 } 
