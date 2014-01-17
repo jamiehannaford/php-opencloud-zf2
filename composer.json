@@ -17,7 +17,6 @@
         "files": ["Module.php"]
     },
     "require": {
-        "zendframework/zendframework": "2.2.5",
         "rackspace/php-opencloud": "dev-master"
     },
     "require-dev" : {
