@@ -17,7 +17,7 @@
         "files": ["Module.php"]
     },
     "require": {
-        "rackspace/php-opencloud": "dev-master"
+        "rackspace/php-opencloud": "~1.9"
     },
     "require-dev" : {
         "guzzle/plugin-mock": "3.8.*@dev",
