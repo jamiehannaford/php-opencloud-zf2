@@ -17,6 +17,7 @@
         "files": ["Module.php"]
     },
     "require": {
+        "php": ">=5.3.3",
         "rackspace/php-opencloud": "~1.9"
     },
     "require-dev" : {
