@@ -2,6 +2,7 @@
     "name": "jamiehannaford/php-opencloud-zf2",
     "description": "ZF2 module that allows easy interaction with Rackspace/OpenStack APIs",
     "minimum-stability": "stable",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "Jamie Hannaford",
