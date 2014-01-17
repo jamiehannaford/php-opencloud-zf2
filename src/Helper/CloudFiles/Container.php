@@ -113,7 +113,8 @@ class Container
      */
     public function renderAllFiles($limit = 100, $urlType = UrlType::CDN, $htmlPrefix = false, $htmlSuffix = false)
     {
-        $files = $this->container->objectList(array(PaginatedIterator::LIMIT => $limit));
+        $config = (is_int($limit)) ? array(PaginatedIterator::LIMIT => $limit) : array();
+        $files = $this->container->objectList($config);
 
         $outputString = '';
         $outputArray = array();

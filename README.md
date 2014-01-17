@@ -60,3 +60,29 @@ cp ./vendor/jamiehannaford/php-opencloud-zf2/config/opencloud.local.php.dist ./c
 If using Rackspace, you must fill in the `username` and `apiKey` config options.
 
 If using OpenStack, you must fill in the `username`, `password` config options, along with *either* `tenantId` or `tenantName`.
+
+## Usage
+
+You can retrieve a Rackspace client object using the Service Manager:
+
+```php
+
+public function indexAction()
+{
+    // get Rackspace client
+    $rackspace = $this->getServiceLocator()->get('OpenCloud');
+
+    // this also works
+    $rackspace = $this->getServiceLocator()->get('OpenCloud\Rackspace');
+
+    // get OpenStack client
+    $openstack = $this->getServiceLocator()->get('OpenCloud\OpenStack');
+}
+```
+
+Once this client object is available, you have full access to the [php-opencloud SDK](https://github.com/rackspace/php-opencloud).
+
+### View helpers
+
+Please see the [CloudFilesHelper wiki](https://github.com/jamiehannaford/php-opencloud-zf2/wiki/Using-the-CloudFiles-View-Helper)
+for more information about how you can streamline the process of accessing CDN resources in your HTML views.
